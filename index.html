@@ -1,64 +1,113 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="enhanced_style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <title>Document</title>
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://example.com/path/to/your/xray_background.jpg'); /* 여기서 배경 이미지 URL을 교체해주세요. */
+            background-size: cover;
+            color: #ffffff;
+        }
+        .contain {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* 투명도 조절 */
+            border-radius: 10px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .input-group {
+            margin-top: 20px;
+        }
+        .custom-file-input::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+        .custom-file-input::before {
+            content: 'Select file';
+            display: inline-block;
+            background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+            border: 1px solid #999;
+            border-radius: 3px;
+            padding: 5px 8px;
+            outline: none;
+            white-space: nowrap;
+            -webkit-user-select: none;
+            cursor: pointer;
+            text-shadow: 1px 1px #fff;
+            font-weight: 700;
+            font-size: 10pt;
+        }
+        .custom-file-input:hover::before {
+            border-color: black;
+        }
+        .custom-file-input:active::before {
+            background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 768px) {
+            .contain {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-	<div style= font-size:25px;color:#9933CC;><strong>Artificial intelligence encephaloma</strong></div>
-	<div>
-	 <img src="img/dna.jpg" alt= "" display="block" width="100%" height="100">
-	</div>
-<div class="contain animated bounce">
-  <form id="form1" runt="server">
-    <div class="alert"></div>
-   <div id='img_contain'><img id="blah" alight='middle' src="http://www.clker.com/cliparts/c/W/h/n/P/W/generic-image-file-icon-hi.png" alt="your image" title='' /></div>
-    <div class="input-group">
-      <div class="custom-file">
-        <input type="file" id="inputGroupFile01" class="imgInp custom-file-input" aria-describedby="inputGroupFileAddon01">
-        
-	<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-      </div>
+    <div style="font-size:25px;color:#9933CC;"><strong>Artificial intelligence encephaloma</strong></div>
+    <div>
+        <img src="https://example.com/path/to/your/dna_image.jpg" alt=""> <!-- 여기서 DNA 이미지 URL을 교체해주세요. -->
     </div>
-  </form>
-  
-</div>
-<script>
-$("#inputGroupFile01").change(function(event) {  
-  RecurFadeIn();
-  readURL(this);    
-});
-$("#inputGroupFile01").on('click',function(event){
-  RecurFadeIn();
-});
-function readURL(input) {    
-  if (input.files && input.files[0]) {   
-    var reader = new FileReader();
-    var filename = $("#inputGroupFile01").val();
-    filename = filename.substring(filename.lastIndexOf('\\')+1);
-    reader.onload = function(e) {
-      debugger;      
-      $('#blah').attr('src', e.target.result);
-      $('#blah').hide();
-      $('#blah').fadeIn(500);      
-      $('.custom-file-label').text(filename);             
-    }
-    reader.readAsDataURL(input.files[0]);    
-  } 
-  $(".alert").removeClass("loading").hide();
-}
-function RecurFadeIn(){ 
-  console.log('ran');
-  FadeInAlert("Wait for it...");  
-}
-function FadeInAlert(text){
-  $(".alert").show();
-  $(".alert").text(text).addClass("loading");  
-}
-	</script>
-	</body>
+    <div class="contain animated bounce">
+        <form id="form1" runat="server">
+            <div class="alert"></div>
+            <div id='img_contain'><img id="blah" align='middle' src="http://www.clker.com/cliparts/c/W/h/n/P/W/generic-image-file-icon-hi.png" alt="your image" title='' /></div>
+            <div class="input-group">
+                <input type="file" id="inputGroupFile01" class="imgInp custom-file-input" aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+            </div>
+        </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        // jQuery 스크립트는 변경 없이 그대로 유지합니다.
+        $("#inputGroupFile01").change(function(event) {  
+          RecurFadeIn();
+          readURL(this);    
+        });
+        $("#inputGroupFile01").on('click',function(event){
+          RecurFadeIn();
+        });
+        function readURL(input) {    
+          if (input.files && input.files[0]) {   
+            var reader = new FileReader();
+            var filename = $("#inputGroupFile01").val();
+            filename = filename.substring(filename.lastIndexOf('\\')+1);
+            reader.onload = function(e) {
+              debugger;      
+              $('#blah').attr('src', e.target.result);
+              $('#blah').hide();
+              $('#blah').fadeIn(500);      
+              $('.custom-file-label').text(filename);             
+            }
+            reader.readAsDataURL(input.files[0]);    
+          } 
+          $(".alert").removeClass("loading").hide();
+        }
+        function RecurFadeIn(){ 
+          console.log('ran');
+          FadeInAlert("Wait for it...");  
+        }
+        function FadeInAlert(text){
+          $(".alert").show();
+          $(".alert").text(text).addClass("loading");  
+        }
+    </script>
+</body>
 </html>
